@@ -1,0 +1,195 @@
+{ "workbench.colorTheme": "Kanagawa",
+  // ============================================
+  // APPEARANCE & THEME
+  // ============================================
+
+  "material-icon-theme.hidesExplorerArrows": true,
+
+  // ============================================
+  // WORKBENCH LAYOUT
+  // ============================================
+  "workbench.editor.showTabs": "single",
+  "workbench.statusBar.visible": false,
+  "workbench.startupEditor": "none",
+  "workbench.tips.enabled": false,
+  "workbench.sideBar.location": "right",
+  "workbench.tree.enableStickyScroll": false,
+  "workbench.tree.renderIndentGuides": "none",
+  "workbench.tree.indent": 12,
+  "workbench.editor.dragToOpenWindow": false,
+
+  // ============================================
+  // EXPLORER
+  // ============================================
+  "explorer.compactFolders": false,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.confirmDelete": false,
+  "explorer.decorations.badges": false,
+  "window.zoomLevel": 0.8,
+  "window.titleBarStyle": "native",
+  "window.menuBarVisibility": "hidden",
+  "window.customTitleBarVisibility": "never",
+  "window.restoreWindows": "none",
+  "window.customMenuBarAltFocus": false,
+  "window.enableMenuBarMnemonics": false,
+  "window.openFoldersInNewWindow": "off",
+  "window.openFilesInNewWindow": "off",
+
+  // ============================================
+  // EDITOR - APPEARANCE
+  // ============================================
+  "editor.minimap.enabled": false,
+  "editor.fontSize": 18,
+  "editor.lineNumbers": "relative",
+  "editor.cursorBlinking": "solid",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.stickyScroll.enabled": false,
+  "editor.showFoldingControls": "never",
+  "editor.guides.indentation": false,
+  "editor.renderLineHighlight": "none",
+  "editor.scrollbar.horizontal": "hidden",
+  "editor.scrollbar.vertical": "hidden",
+  "editor.overviewRulerBorder": false,
+  "editor.matchBrackets": "never",
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": "comment",
+        "settings": {
+          "fontStyle": "italic"
+        }
+      }
+    ]
+  },
+
+  // ============================================
+  // EDITOR - BEHAVIOR
+  // ============================================
+  "editor.tabSize": 2,
+  "editor.detectIndentation": false,
+  "editor.insertSpaces": true,
+  "editor.codeLens": false,
+  "editor.parameterHints.enabled": false,
+  "editor.occurrencesHighlight": "off",
+  "editor.selectionHighlight": true,
+
+  // ============================================
+  // EDITOR - SUGGESTIONS & AUTOCOMPLETE
+  // ============================================
+  // IntelliSense dropdown suggestions - manual trigger only (Alt+S)
+  "editor.quickSuggestions": {
+    "other": false,
+    "comments": false,
+    "strings": false
+  },
+  "editor.suggestOnTriggerCharacters": false,
+  "editor.acceptSuggestionOnCommitCharacter": false,
+  "editor.suggest.showIcons": false,
+  "editor.quickSuggestionsDelay": 999999,
+
+  // GitHub Copilot inline suggestions - manual trigger only
+  "editor.inlineSuggest.enabled": false,
+
+
+  // ============================================
+  // FILES
+  // ============================================
+  "files.autoSave": "afterDelay",
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": false,
+  "files.hotExit": "off",
+
+  // ============================================
+  // LANGUAGE-SPECIFIC FORMATTERS
+  // ============================================
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // ============================================
+  // GITHUB COPILOT
+  // ============================================
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "github.copilot.selectedCompletionModel": "claude-sonnet-4.5",
+  "inlineChat.enableV2": true,
+  // ============================================
+  // TERMINAL
+  // ============================================
+  "terminal.external.linuxExec": "ghostty",
+  "terminal.integrated.suggest.enabled": false,
+  /* Until there is not fast and easy way
+   * to pin the tmux to the first tab. and the editor to the second.
+   * keept default location at view.
+   */
+  "terminal.integrated.defaultLocation": "view",
+  "terminal.integrated.defaultProfile.linux": "tmux",
+  "terminal.integrated.automationProfile.linux": {
+    "path": "tmux",
+    "args": ["new-session", "-A", "-s", "vscode"]
+  },
+  "terminal.integrated.tabs.enabled": false,
+  "terminal.integrated.stickyScroll.enabled": false,
+  "terminal.integrated.enableImages": true,
+  "terminal.integrated.enableVisualBell": true,
+  "terminal.integrated.fontLigatures.enabled": true,
+  "terminal.integrated.gpuAcceleration": "on",
+  "terminal.integrated.hideOnLastClosed": false,
+  "terminal.integrated.enablePersistentSessions": false,
+  "terminal.integrated.persistentSessionReviveProcess": "never",
+  "terminal.integrated.profiles.linux": {
+    "tmux": {
+      "path": "bash",
+      "icon": "terminal-tmux",
+      "args": [
+        "-c",
+        "if [ -f \"${PWD}/.vscode/settings.json\" ] || [ -f \"${PWD}/.git/config\" ]; then session_name=\"$(basename \"${PWD}\")-$(echo \"${PWD}\" | md5sum | cut -c1-4)\"; tmux new-session -A -s \"${session_name}\" -c \"${PWD}\"; else session_name=\"scratch-$(echo \"${PWD}\" | md5sum | cut -c1-4)\"; tmux kill-session -t \"${session_name}\" 2>/dev/null; tmux new-session -s \"${session_name}\" -c \"${PWD}\"; fi"
+      ]
+    },
+    "bash": {
+      "path": "/bin/bash",
+      "icon": "terminal-bash"
+    }
+  },
+
+  // ============================================
+  // CHAT & AI TOOLS
+  // ============================================
+  "chat.tools.terminal.terminalProfile.linux": {
+    "path": "bash",
+    "icon": "terminal-bash"
+  },
+
+  // ============================================
+  // EXTENSIONS & PLUGINS
+  // ============================================
+  "extensions.ignoreRecommendations": true,
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+  "emmet.triggerExpansionOnTab": true,
+  "sonarlint.automaticAnalysis": true,
+
+  // ============================================
+  // SOURCE CONTROL & PROBLEMS
+  // ============================================
+  "scm.diffDecorations": "all",
+  "problems.showCurrentInStatus": false,
+  "problems.decorations.enabled": true,
+
+  // ============================================
+  // SECURITY & MISC
+  // ============================================
+  "security.workspace.trust.enabled": false,
+  "accessibility.windowTitleOptimized": false,
+  "window.controlsStyle": "hidden",
+  "workbench.iconTheme": "material-icon-theme",
+  "git.confirmSync": false,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "workbench.activityBar.location": "hidden",
+  "window.newWindowProfile": "Default",
+  "[java]": {
+    "editor.defaultFormatter": "redhat.java"
+  },
+  "git.autofetch": true
+}

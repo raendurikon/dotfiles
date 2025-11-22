@@ -1,0 +1,279 @@
+// Place your key bindings in this file to override the defaults
+[
+  // ========================================
+  // Sidebar Navigation
+  // ========================================
+
+  // Explorer (Alt+E)
+  {
+    "key": "alt+e",
+    "command": "workbench.files.action.showActiveFileInExplorer",
+    "when": "!explorerViewletFocus && editorFocus"
+  },
+  {
+    "key": "alt+e",
+    "command": "workbench.files.action.focusFilesExplorer",
+    "when": "!explorerViewletFocus && !editorFocus"
+  },
+
+  {
+    "key": "alt+e",
+    "command": "workbench.action.toggleSidebarVisibility",
+    "when": "explorerViewletFocus"
+  },
+
+  // Extensions (Alt+X)
+  {
+    "key": "alt+x",
+    "command": "workbench.view.extensions",
+    "when": "!sideBarFocus || activeViewlet != 'workbench.view.extensions'"
+  },
+  {
+    "key": "alt+x",
+    "command": "workbench.action.toggleSidebarVisibility",
+    "when": "sideBarFocus && activeViewlet == 'workbench.view.extensions'"
+  },
+
+  // Source Control / Git (Alt+G)
+  {
+    "key": "alt+g",
+    "command": "workbench.view.scm",
+    "when": "!sideBarFocus || activeViewlet != 'workbench.view.scm'"
+  },
+  {
+    "key": "alt+g",
+    "command": "workbench.action.toggleSidebarVisibility",
+    "when": "sideBarFocus && activeViewlet == 'workbench.view.scm'"
+  },
+  {
+    "key": "ctrl+alt+g",
+    "command": "git-graph.view",
+    "when": "!terminalFocus"
+  },
+  {
+    "key": "ctrl+k ctrl+g",
+    "command": "git-graph.view",
+    "when": "terminalFocus"
+  }
+
+  // ========================================
+  // Auxiliary Bar (Copilot Chat)
+  // ========================================
+
+  // Open/Toggle Chat (Alt+C)
+  {
+    "key": "alt+c",
+    "command": "workbench.action.chat.open",
+    "when": "!auxiliaryBarFocus"
+  },
+  {
+    "key": "alt+c",
+    "command": "workbench.action.toggleAuxiliaryBar",
+    "when": "auxiliaryBarFocus"
+  },
+
+  // Maximize/Close Auxiliary Bar (Alt+A)
+  {
+    "key": "alt+a",
+    "command": "workbench.action.toggleMaximizedAuxiliaryBar"
+  },
+  {
+    "key": "alt+a",
+    "command": "workbench.action.closeAuxiliaryBar",
+    "when": "auxiliaryBarVisible && auxiliaryBarMaximized"
+  },
+
+  // ========================================
+  // Terminal
+  // ========================================
+
+  // Toggle Maximized Terminal (Alt+T)
+  // TODO: when active is lost, then panel wont ocmptley close,
+  {
+    "key": "alt+t",
+    "command": "workbench.action.toggleMaximizedPanel",
+    "when": "!panelMaximized"
+  },
+  {
+    "key": "alt+t",
+    "command": "workbench.action.togglePanel",
+    "when": "panelVisible"
+  },
+
+  // ========================================
+  // Editor Navigation (Vim-style)
+  // ========================================
+
+  {
+    "key": "alt+h",
+    "command": "workbench.action.navigateLeft"
+  },
+  {
+    "key": "alt+j",
+    "command": "workbench.action.navigateDown"
+  },
+  {
+    "key": "alt+k",
+    "command": "workbench.action.navigateUp"
+  },
+  {
+    "key": "alt+l",
+    "command": "workbench.action.navigateRight"
+  },
+
+  // ========================================
+  // Editor Features
+  // ========================================
+
+  // Parameter Hints (Alt+P)
+  {
+    "key": "alt+p",
+    "command": "editor.action.triggerParameterHints",
+    "when": "editorHasSignatureHelpProvider && editorTextFocus && !parameterHintsVisible"
+  },
+  {
+    "key": "alt+p",
+    "command": "closeParameterHints",
+    "when": "editorTextFocus && parameterHintsVisible"
+  },
+
+  // Refactor (Alt+R)
+  {
+    "key": "alt+r",
+    "command": "editor.action.refactor",
+    "when": "editorHasCodeActionsProvider && textInputFocus && !editorReadonly"
+  },
+
+  // Suggestions (Alt+S)
+  {
+    "key": "alt+s",
+    "command": "editor.action.triggerSuggest",
+    "when": "(editorFocus && !suggestWidgetVisible)"
+  },
+  {
+    "key": "alt+s",
+    "command": "hideSuggestWidget",
+    "when": "editorFocus && suggestWidgetVisible"
+  },
+  // Copilot Inline Suggestions (Alt+I)
+{
+    "key": "alt+i",
+    "command": "editor.action.inlineSuggest.trigger",
+    "when": "editorFocus && !inlineSuggestionVisible"
+  },
+  {
+    "key": "alt+i",
+    "command": "editor.action.inlineSuggest.hide",
+    "when": "editorFocus && inlineSuggestionVisible"
+  },
+
+  // ========================================
+  // Quick Access
+  // ========================================
+
+  // Quick Open / Go to File (Alt+F)
+
+  {
+    "key": "alt+f",
+    "command": "workbench.action.quickOpen"
+  },
+
+  // Command Palette (Alt+V)
+  {
+    "key": "alt+v",
+    "command": "workbench.action.showCommands"
+  },
+
+  // ========================================
+  // Ctrl+K Chords (work in terminal)
+  // ========================================
+
+  // Explorer (Ctrl+K E)
+  {
+    "key": "ctrl+k e",
+    "command": "workbench.files.action.showActiveFileInExplorer",
+    "when": "!explorerViewletFocus"
+  },
+  {
+    "key": "ctrl+k e",
+    "command": "workbench.action.toggleSidebarVisibility",
+    "when": "explorerViewletFocus"
+  },
+
+  // Extensions (Ctrl+K X)
+  {
+    "key": "ctrl+k x",
+    "command": "workbench.view.extensions",
+    "when": "!sideBarFocus || activeViewlet != 'workbench.view.extensions'"
+  },
+  {
+    "key": "ctrl+k x",
+    "command": "workbench.action.toggleSidebarVisibility",
+    "when": "sideBarFocus && activeViewlet == 'workbench.view.extensions'"
+  },
+
+  // Source Control / Git (Ctrl+K G)
+  {
+    "key": "ctrl+k g",
+    "command": "workbench.view.scm",
+    "when": "!sideBarFocus || activeViewlet != 'workbench.view.scm'"
+  },
+  {
+    "key": "ctrl+k g",
+    "command": "workbench.action.toggleSidebarVisibility",
+    "when": "sideBarFocus && activeViewlet == 'workbench.view.scm'"
+  },
+
+  // Open/Toggle Chat (Ctrl+K C)
+  {
+    "key": "ctrl+k c",
+    "command": "workbench.action.chat.open",
+    "when": "!auxiliaryBarFocus"
+  },
+  {
+    "key": "ctrl+k c",
+    "command": "workbench.action.toggleAuxiliaryBar",
+    "when": "auxiliaryBarFocus"
+  },
+
+  // Maximize/Close Auxiliary Bar (Ctrl+K A)
+  {
+    "key": "ctrl+k a",
+    "command": "workbench.action.toggleMaximizedAuxiliaryBar"
+  },
+  {
+    "key": "ctrl+k a",
+    "command": "workbench.action.closeAuxiliaryBar",
+    "when": "auxiliaryBarVisible && auxiliaryBarMaximized"
+  },
+
+  // Toggle Terminal (Ctrl+K T)
+  {
+    "key": "ctrl+k t",
+    "command": "workbench.action.toggleMaximizedPanel",
+    "when": "!terminal.visible"
+  },
+  {
+    "key": "ctrl+k t",
+    "command": "workbench.action.terminal.toggleTerminal",
+    "when": "terminal.visible"
+  },
+  {
+    "key": "ctrl+r",
+    "command": "-workbench.action.openRecent"
+  },
+  {
+    "key": "ctrl+r",
+    "command": "-workbench.action.reloadWindow",
+    "when": "isDevelopment"
+  },
+  {
+    "key": "alt+q",
+    "command": "workbench.action.closeEditorInAllGroups"
+  },
+  {
+    "key": "ctrl+shift+a",
+    "command": "workbench.action.toggleActivityBarVisibility"
+  },
+]
+// TODO add move selected text left right
