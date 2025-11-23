@@ -54,7 +54,7 @@
     "key": "ctrl+k ctrl+g",
     "command": "git-graph.view",
     "when": "terminalFocus"
-  }
+  },
 
   // ========================================
   // Auxiliary Bar (Copilot Chat)
@@ -274,6 +274,16 @@
   {
     "key": "ctrl+shift+a",
     "command": "workbench.action.toggleActivityBarVisibility"
+  },
+  {
+    "key": "alt+o",
+    "command": "workbench.action.files.openFolder",
+    "when": "openFolderWorkspaceSupport"
+  },
+  {
+    "key": "ctrl+k ctrl+o",
+    "command": "-workbench.action.files.openFolder",
+    "when": "openFolderWorkspaceSupport"
   },
 ]
 // TODO add move selected text left right

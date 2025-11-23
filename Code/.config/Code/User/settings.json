@@ -1,4 +1,4 @@
-{ "workbench.colorTheme": "Kanagawa",
+{
   // ============================================
   // APPEARANCE & THEME
   // ============================================
@@ -186,10 +186,10 @@
   "workbench.iconTheme": "material-icon-theme",
   "git.confirmSync": false,
   "diffEditor.ignoreTrimWhitespace": false,
-  "workbench.activityBar.location": "hidden",
   "window.newWindowProfile": "Default",
   "[java]": {
     "editor.defaultFormatter": "redhat.java"
   },
-  "git.autofetch": true
+  "git.autofetch": true,
+  "workbench.activityBar.location": "hidden"
 }
