@@ -190,6 +190,5 @@
   "[java]": {
     "editor.defaultFormatter": "redhat.java"
   },
-  "git.autofetch": true,
-  "workbench.activityBar.location": "hidden"
+  "git.autofetch": true
 }
