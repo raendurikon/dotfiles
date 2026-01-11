@@ -1,0 +1,77 @@
+(defcfg
+  process-unmapped-keys yes
+)
+
+
+(defsrc
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]    \
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt           spc            ralt rmet rctl
+)
+
+(defvar
+  tap-time 200
+  hold-time-short 150
+  hold-time 200
+  hold-time-long 300
+)
+
+(defalias
+  ;; Base layer home row mods
+  a-mod (tap-hold $tap-time $hold-time-long a lmet)
+  s-mod (tap-hold $tap-time $hold-time-long s lalt)
+  d-mod (tap-hold $tap-time $hold-time-short d lctl)
+  f-mod (tap-hold $tap-time $hold-time f lsft)
+  j-mod (tap-hold $tap-time $hold-time j rsft)
+  k-mod (tap-hold $tap-time $hold-time-short k rctl)
+  l-mod (tap-hold $tap-time $hold-time-long l ralt)
+  sem-mod (tap-hold $tap-time $hold-time-long ; rmet)
+  c-esc (tap-hold $tap-time $hold-time esc (layer-while-held ger))
+
+  ;; Space activates nav layer when held
+  spc-nav (tap-hold $tap-time $hold-time spc (layer-while-held nav))
+
+  ;; Nav layer aliases - tap for nav, hold for mods
+  s-nav (tap-hold $tap-time $hold-time bck lalt)
+  d-nav (tap-hold $tap-time $hold-time pgup lsft)
+  f-nav (tap-hold $tap-time $hold-time pgdn lctl)
+)
+
+(deflayer base
+  grv    1      2       3      4      5    6    7      8      9      0        -    =    bspc
+  tab    q      w       e      r      t    y    u      i      o      p        [    ]    \
+  @c-esc @a-mod @s-mod  @d-mod @f-mod g    h    @j-mod @k-mod @l-mod @sem-mod '    ret
+  lsft     z      x       c      v      b    n    m      ,      .      /      rsft
+  lctl     lmet   lalt              @spc-nav             ralt   rmet   rctl
+)
+
+(deflayer nav
+  grv     1      2       3      4      5    6    7      8      9      0    -    =    bspc
+  tab    q      w       e      r      t    y    u      home   o      bspc [    ]    \
+  @c-esc @a-mod @s-nav  @d-nav @f-nav fwd  left down   up     right  end  '    ret
+  XX     z      x       c      v      b    n    m      ,      .      /    XX
+  XX     XX     XX                        spc                 XX     XX   XX
+)
+
+(defalias
+  Ae (unicode Ä)
+  Ue (unicode Ü)
+  Oe (unicode Ö)
+  ae (unicode ä)
+  ue (unicode ü)
+  oe (unicode ö)
+  ss (unicode ß)
+  _ae (fork @ae @Ae (lsft rsft))
+  _ue (fork @ue @Ue (lsft rsft))
+  _oe (fork @oe @Oe (lsft rsft))
+)
+
+(deflayer ger
+  grv  1    2    3    4      5    6    7      8    9    0    -    =    bspc
+  tab  q    w    e    r      t    y    @_ue   i    @_oe p    [    ]    \
+  XX   @_ae @ss  d    lsft   g    h    lsft   k    l    ;    '    ret
+  XX   z    x    c    v      b    n    m      ,    .    /    XX
+  XX   XX   XX                spc             XX   XX   XX
+)
