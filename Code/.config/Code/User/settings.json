@@ -1,4 +1,4 @@
-{ "workbench.colorTheme": "Monokai Pro (Filter Ristretto)",                      
+{ "workbench.colorTheme": "Monokai Pro (Filter Ristretto)",
   // ============================================
   // APPEARANCE & THEME
   // ============================================
@@ -183,7 +183,7 @@
   "security.workspace.trust.enabled": false,
   "accessibility.windowTitleOptimized": false,
   "window.controlsStyle": "hidden",
-  "workbench.iconTheme": "material-icon-theme",
+  "workbench.iconTheme": "Monokai Pro (Filter Ristretto) Icons",
   "git.confirmSync": false,
   "diffEditor.ignoreTrimWhitespace": false,
   "window.newWindowProfile": "Default",
