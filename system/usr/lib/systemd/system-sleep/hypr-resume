@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Hyprland profile auto-select on resume from suspend/hibernate
+# Place in /usr/lib/systemd/system-sleep/
+
+case "$1" in
+    post)
+        # Find the user running Hyprland
+        HYPR_USER=$(who | grep -m1 'tty' | awk '{print $1}')
+        [ -z "$HYPR_USER" ] && HYPR_USER="raendurikon"
+
+        # Get Hyprland instance signature from runtime dir
+        HYPR_RUNTIME="/run/user/$(id -u "$HYPR_USER")/hypr"
+
+        if [ -d "$HYPR_RUNTIME" ]; then
+            HYPR_INSTANCE=$(ls "$HYPR_RUNTIME" 2>/dev/null | head -1)
+
+            if [ -n "$HYPR_INSTANCE" ]; then
+                # Run the autoselect script as the user with proper environment
+                runuser -u "$HYPR_USER" -- env \
+                    HYPRLAND_INSTANCE_SIGNATURE="$HYPR_INSTANCE" \
+                    XDG_RUNTIME_DIR="/run/user/$(id -u "$HYPR_USER")" \
+                    /home/"$HYPR_USER"/omarchy-tonic/scripts/hypr-profile-autoselect.sh &
+            fi
+        fi
+        ;;
+esac
