@@ -1,0 +1,266 @@
+@import "../omarchy/current/theme/waybar.css";
+
+* {
+  background-color: @background;
+  color: @foreground;
+
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 12px;
+}
+
+.modules-left {
+  margin-left: 16px;
+}
+
+.modules-right {
+  margin-right: 16px;
+}
+
+#workspaces button {
+  all: initial;
+  padding: 0 6px;
+  margin: 0 1.5px;
+  min-width: 9px;
+  color: @foreground;
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 12px;
+}
+
+#workspaces button.empty {
+  opacity: 0.5;
+}
+
+#cpu,
+#battery,
+#pulseaudio,
+#custom-omarchy,
+#custom-update {
+  min-width: 12px;
+  margin: 0 7.5px;
+}
+
+#tray {
+  margin-right: 16px;
+}
+
+#bluetooth {
+  margin-right: 17px;
+}
+
+#network {
+  margin-right: 13px;
+}
+
+#custom-expand-icon {
+  margin-right: 18px;
+}
+
+#custom-update {
+  font-size: 10px;
+}
+
+#clock {
+  margin-left: 5px;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+#custom-screenrecording-indicator,
+#custom-idle-indicator,
+#custom-notification-silencing-indicator {
+  min-width: 12px;
+  margin-left: 5px;
+  margin-right: 0;
+  font-size: 10px;
+  padding-bottom: 1px;
+}
+
+#custom-screenrecording-indicator.active {
+  color: #a55555;
+}
+
+#custom-voxtype {
+  min-width: 12px;
+  margin: 0 0 0 7.5px;
+}
+
+#custom-voxtype.recording {
+  color: #a55555;
+}
+
+#custom-idle-indicator.active,
+#custom-notification-silencing-indicator.active {
+  color: #a55555;
+}
+
+/* ── Floating pills ─────────────────────────────────────────────
+   Reset all widget backgrounds to transparent, then re-apply
+   only where needed. This beats the * rule above via cascade order
+   (same specificity = later wins) while pills with ID selectors
+   keep their backgrounds via higher specificity.
+   ────────────────────────────────────────────────────────────── */
+
+/* Reset widget backgrounds to transparent so only pill containers get a fill.
+   Scoped to waybar's window. The tooltip popup is also a descendant, so we
+   explicitly restore its opaque background below. */
+window#waybar * {
+  background-color: alpha(@background, 0);
+}
+
+window#waybar {
+  background-color: alpha(@background, 0);
+}
+
+/* Restore tooltip background — higher specificity than `window#waybar *` */
+window#waybar tooltip,
+window#waybar tooltip * {
+  background-color: @background;
+  color: @foreground;
+}
+
+window#waybar tooltip {
+  padding: 6px;
+}
+
+window#waybar #left-pill,
+window#waybar #center-pill,
+window#waybar #status-pill {
+  background-color: alpha(@background, 0.8);
+  border-radius: 20px;
+  margin: 4px 6px 0 6px;
+  padding: 0 8px;
+}
+
+/* Media pill — lives directly as a module so it can vanish when stopped */
+window#waybar #custom-mpris-scroll {
+  background-color: alpha(@background, 0.8);
+  border-radius: 20px;
+  margin: 4px 6px 0 6px;
+  padding: 2px 14px;
+  font-size: 11px;
+}
+
+#custom-mpris-scroll.stopped {
+  background-color: rgba(0, 0, 0, 0);
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+}
+
+#custom-mpris-scroll.paused {
+  opacity: 0.6;
+}
+.waybar-weather {
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.waybar-weather.hot {
+  color: #a91313;
+}
+
+.waybar-weather.cold {
+  color: #5fa4ec;
+}
+
+.waybar-weather.rain,
+.waybar-weather.snow,
+.waybar-weather.smoke {
+  animation-name: blink-condition;
+  animation-duration: 1s;
+}
+/* ── Battery states ───────────────────────────────────────────── */
+
+#battery.charging,
+#battery.plugged,
+#battery.not-charging,
+#battery.full,
+#battery.charging.warning,
+#battery.charging.critical,
+#battery.plugged.warning,
+#battery.plugged.critical,
+#battery.not-charging.warning,
+#battery.not-charging.critical,
+#battery.full.warning,
+#battery.full.critical {
+  color: #5b9bf5;
+  animation: none;
+  margin-left: 7px;
+  margin-right: 8px;
+  margin-bottom: 0px;
+  font-size: 12px;
+}
+
+#battery.warning {
+  color: #e06050;
+}
+
+#battery.critical {
+  color: #d03030;
+  animation: battery-wiggle 4s ease-in-out infinite;
+}
+
+@keyframes battery-wiggle {
+  0% {
+    margin-left: 7px;
+    margin-right: 8px;
+    margin-bottom: 0px;
+    font-size: 12px;
+    color: #d03030;
+  }
+  2% {
+    margin-left: 3px;
+    margin-right: 12px;
+    margin-bottom: 4px;
+    font-size: 16px;
+    color: @foreground;
+  }
+  4% {
+    margin-left: 12px;
+    margin-right: 3px;
+    margin-bottom: 0px;
+    font-size: 18px;
+    color: #d03030;
+  }
+  6% {
+    margin-left: 2px;
+    margin-right: 13px;
+    margin-bottom: 5px;
+    font-size: 20px;
+    color: @foreground;
+  }
+  8% {
+    margin-left: 12px;
+    margin-right: 3px;
+    margin-bottom: 0px;
+    font-size: 18px;
+    color: #d03030;
+  }
+  10% {
+    margin-left: 4px;
+    margin-right: 11px;
+    margin-bottom: 3px;
+    font-size: 16px;
+    color: @foreground;
+  }
+  12% {
+    margin-left: 7px;
+    margin-right: 8px;
+    margin-bottom: 0px;
+    font-size: 12px;
+    color: #d03030;
+  }
+  100% {
+    margin-left: 7px;
+    margin-right: 8px;
+    margin-bottom: 0px;
+    font-size: 12px;
+    color: #d03030;
+  }
+}
